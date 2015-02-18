@@ -1,3 +1,4 @@
+function read(){
 (function( $ ){
   jQuery.fn.extend({
     html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
@@ -64,3 +65,4 @@
     }
   });
 })( jQuery );
+}
