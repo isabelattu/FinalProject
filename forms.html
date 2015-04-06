@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.blue.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+    </head>
+	
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>Order Page</h1>
+        </div>
+        
+        <div data-role="content">   
+
+			    
+            <form>
+			<ul>
+					<li data-role="fieldcontain">
+                        <label for="name2b">Your Name:</label>
+                        <input type="text" name="name" id="name" value="" data-clear-btn="true" placeholder="Type your text here...">
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="name2b">Contact Number:</label>
+                        <input type="text" name="number" id="number" value="" data-clear-btn="true" placeholder="Type your text here...">
+                    </li>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="inputEmail">Email Address:</label>
+                        <input type="email" name="email" id="email" value="" data-clear-btn="true" placeholder="something@somethingelse.com">
+                   
+                    <li>
+					<button href="#popupDialog2" class="ui-btn"  id="save" align = "center" onclick="order()"></i>Done</button>
+					<!--p><a href="#popupDialog" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop"><i class='lIcon fa fa-external-link'></i>DONE</a></p-->
+					<!--button type="reset" data-inline='true'><i class='lIcon fa fa-times'></i>Cancel</button-->
+                    </li>
+					
+				<div data-role="popup" id="popupDialog2" data-theme="b">
+					
+        
+                <div data-role="content" data-theme="b">
+                    <p>Thank You For placing an order. Your order has been processed and we will get back to you.  Please click <code>YES</code>to continue and 
+				<code>NO</code> to cancel your order</p>
+		            <div class='showastabs center nobg'>
+		                    <a href="document.location='realinfo.html'"  data-role="button" data-inline="true"><i class='lIcon fa fa-check'></i>Yes</a>
+		                    <a onclick=" " data-rel="back" data-role="button" data-inline="true"><i class='lIcon fa fa-times'></i>No</a>
+		            </div>
+                    
+                </div>
+            </div>
+				
+            </form>
+    <script src="js/nativedroid.script.js"></script>
+	<script src="js/sth.js"></script>
+    </body>
+</html>

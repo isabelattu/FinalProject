@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+	<!--JavaScript Code to scan the various qrcodes-->
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.blue.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<!-- Extras for: Cards.html -->
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+    </head>
+	
+	<script>
+	
+	/*function syncAjax(u){
+			var obj = $.ajax(
+					{url:u,
+					async: false
+					}
+				);
+			return $.parseJSON(obj.responseText);
+
+	}
+	
+function read(){
+(function( $ ){
+  jQuery.fn.extend({
+    html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
+      return this.each(function() {
+        var currentElem = $( this );
+        
+        var height = currentElem.height();
+        var width = currentElem.width();
+        
+        if (height == null) {
+          height = 250;
+        }
+        
+        if (width == null) {
+          width = 300;
+        }
+        
+        var vidElem = $('<video width="' + width + 'px" height="' + height + 'px"></video>').appendTo(currentElem);
+        var canvasElem = $('<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:none;"></canvas>').appendTo(currentElem);
+        
+        var video = vidElem[0];
+        var canvas = canvasElem[0];
+        var context = canvas.getContext('2d');
+        var localMediaStream;
+        
+        var scan = function() {
+          if (localMediaStream) {
+            context.drawImage(video, 0, 0, 307,250);
+    
+            try {
+              qrcode.decode();
+            } catch(e) {
+              qrcodeError(e);
+            }
+    
+            setTimeout(scan, 500);
+    
+          } else {
+            setTimeout(scan,500);
+          }
+        }//end snapshot function
+        
+        window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+        navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    
+        var successCallback = function(stream) {
+            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+            localMediaStream = stream;
+    
+            video.play();
+            setTimeout(scan,1000);
+        }
+    
+        // Call the getUserMedia method with our callback functions
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({video: true}, successCallback, videoError);
+        } else {
+            console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
+            // Display a friendly "sorry" message to the user
+        }
+    
+        qrcode.callback = qrcodeSuccess;
+      }); // end of html5_qrcode
+    }
+  });
+})( jQuery );
+	}*/
+
+</script>
+    <body>
+
+	<div id='map-canvas'></div>
+        
+    <div data-role="page" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>Start Navigation</h1>
+        </div>
+		
+		 <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+            <div data-role="collapsible">
+                <h3>Please click to display info</h3>
+				<div class='inset'>
+					<div class='message info'>
+						<i class='fa fa-info'></i>
+						<p>Your tour has started. Please click the <code>SCAN</code>button below to scan the QRcode displayed on the artpiece in order to read more about it.</p>
+					</div>
+				</div>
+            </div>
+        
+        <div data-role="content">   
+
+			
+			<ul data-nativedroid-plugin='cards'>
+				
+				<li data-cards-type='traffic' data-cards-traffic-route='{"from":"42.350742,-71.083217","to":"42.353709,-71.053613","type" : "coords"}'>
+					<h1><strong>18 minutes</strong> to Home</h1>
+					<h2>Normal traffic on US-101 N</h2>
+					<div class='map'></div>
+					<a href='#'><i class='fa fa-map-marker'></i> Navigate</a>
+				</li>
+				
+			</ul>  
+	        
+        </div>
+	<!--a  data-rel="popup" data-position-to="window" data-role="button" id="button" data-inline="true" data-transition="pop"><i class='lIcon fa fa-external-link'></i>SCAN</a-->
+	<form>
+	<a class="ui-btn" onclick="document.location='no/src/test.html'" align ="center">SCAN</a>
+	</form>
+    </div>
+    <!-- Interface for Barcode and QRcode reader -->
+		<div style="container">
+		  <canvas id="qr-canvas" width="320" height="240"></canvas>    
+		  <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+		  <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+		  <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+		  <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+		</div>
+    
+    <script src="js/nativedroid.script.js"></script>
+    </body>
+</html>

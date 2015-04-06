@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<!-- Extras for: Cards.html -->
+	<!--script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script-->
+		
+				<script src="speakClient.js"></script>
+		<script>
+		 var id;
+		function getParameterByName(name){
+		  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		  var regexS = "[\\?&]"+name+"=([^&#]*)";
+		  var regex = new RegExp( regexS );
+		  var results = regex.exec( window.location.href );
+		  if( results == null )
+			return "Nothing here";
+		  else
+			return decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		
+		id = getParameterByName("name");
+		
+		function mypage(){
+		
+		$(document).ready(function()
+		
+		{
+      $.get(id, function(data) {
+        $('div#tableWrapper').append('<table id="ajaxTable"></table>');
+        $(document).ready(function() {
+            $(data).children('tabledata').children('row').each(function() {
+                var thisRow = this;
+                $('table#ajaxTable').append('<tr></tr>');
+                $(thisRow).children('column').each(function() {
+                    var thisColumn = $(this).text();
+                    $('table#ajaxTable').children('tbody').children('tr').last().append('<td style="border: 1px solid black">' + thisColumn + '</td>');                  
+                });            
+            });
+        });
+    });
+});
+
+		
+		
+		}
+		
+	//id = getParameterByName("name");
+		alert(id);
+	  $("#textnow").html(id);
+	 
+	  document.getElementById("textnew").value =id;
+	 
+</script>
+	<!--script src="http://code.jquery.com/jquery-1.9.1.min.js"></script-->
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+		
+		
+
+    </head>
+	
+	<body onload="mypage();">
+	<!--body onload="testpage();"-->
+	<a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+  <form onsubmit="speak(textnew.value,{amplitude: amp.value,wordgap: workdgap.value, pitch: pitch.value, speed: speed.value }); return false">
+     <input type="Hidden" name="textnew" id="textnew" size=50 value="testing">
+	 
+    <input type="Hidden" name="amp" size=5 value="100">
+    <input type="Hidden" name="pitch" size=5 value="50">
+    <input type="Hidden" name="speed" size=5 value="175">
+    <input type="Hidden" name="workdgap" size=5 value="0">
+    <input type="submit" value="Listen to audio!">
+	<div id="audio"></div>
+  </form>
+        
+    <div data-role="page" data-theme='b'>
+
+	<div data-role="panel" data-display="push" id="mypanel" data-theme="b">
+        <ul data-role="listview">
+            <li>Your wishes</li>
+            <li data-icon='false'><a href="forms.html"><i class='lIcon fa fa-coffee'></i>Place an order</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-beer'></i>Back</a></li>
+        </ul>
+    </div>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="true"><i class='fa fa-bars'></i></a>
+            <h1>ART INFORMATION</h1>
+        </div>
+        
+        <div data-role="content">   
+
+			<ul data-nativedroid-plugin='cards'>
+				<li data-cards-type='text' id="textnow">
+					
+				</li>
+				
+				
+							
+				<li data-cards-type='text' id="textnew">
+					
+				</li>
+				<li data-cards-type='text'>
+					
+				</li>
+			</ul>
+
+	        
+        </div>
+		
+		<div id="tableWrapper">
+			
+		</div> 
+
+    </div>
+	
+
+    <script src="js/nativedroid.script.js"></script>
+	<script src="js/sth.js"></script>
+	<script src="speakClient.js"></script>
+    </body>
+	
+	
+</html>
+
